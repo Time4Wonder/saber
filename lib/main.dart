@@ -120,20 +120,24 @@ Future<void> appRunner(List<String> args) async {
 }
 
 void startSyncAfterLoaded() async {
-  await stows.username.waitUntilRead();
-  await stows.encPassword.waitUntilRead();
+  await Future.wait([
+    stows.username.waitUntilRead(),
+    stows.ncPassword.waitUntilRead(),
+    stows.encPassword.waitUntilRead(),
+    stows.key.waitUntilRead(),
+    stows.iv.waitUntilRead(),
+  ]);
 
   stows.username.removeListener(startSyncAfterLoaded);
+  stows.ncPassword.removeListener(startSyncAfterLoaded);
   stows.encPassword.removeListener(startSyncAfterLoaded);
   if (!stows.loggedIn) {
     // try again when logged in
     stows.username.addListener(startSyncAfterLoaded);
+    stows.ncPassword.addListener(startSyncAfterLoaded);
     stows.encPassword.addListener(startSyncAfterLoaded);
     return;
   }
-
-  // wait for other prefs to load
-  await Future.delayed(const Duration(milliseconds: 100));
 
   // start syncing
   syncer.downloader.refresh();

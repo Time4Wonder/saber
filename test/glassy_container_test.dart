@@ -122,10 +122,10 @@ class _TestTile extends StatelessWidget {
                         aspectRatio: 1.2,
                         child: Icon(
                           switch (platform) {
-                            .iOS || .macOS => Icons.apple,
-                            .android || .fuchsia => Icons.android,
-                            .linux => FontAwesomeIcons.linux,
-                            .windows => FontAwesomeIcons.windows,
+                            TargetPlatform.iOS || TargetPlatform.macOS => Icons.apple,
+                            TargetPlatform.android || TargetPlatform.fuchsia => Icons.android,
+                            TargetPlatform.linux => FontAwesomeIcons.linux as IconData,
+                            TargetPlatform.windows => FontAwesomeIcons.windows as IconData,
                           },
                           size: 24,
                           color: theme.colorScheme.onSurface,

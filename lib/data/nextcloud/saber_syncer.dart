@@ -133,7 +133,10 @@ class SaberSyncInterface
   }
 
   @override
-  Future<SaberSyncFile> getSyncFileFromLocalFile(File localFile) async {
+  Future<SaberSyncFile> getSyncFileFromLocalFile(
+    File localFile, [
+    bool useCache = true,
+  ]) async {
     final relativePath = localFile.path
         .substring(FileManager.documentsDirectory.length)
         // Compensate for Windows using backslashes
@@ -146,7 +149,7 @@ class SaberSyncInterface
         '$encryptedName'
         '$encExtension';
 
-    final remoteFile = await getWebDavFile(remotePath);
+    final remoteFile = await getWebDavFile(remotePath, useCache: useCache);
 
     return SaberSyncFile(
       remoteFile: remoteFile,
@@ -575,9 +578,15 @@ class SaberSyncFile extends AbstractSyncFile<File, WebDavFile> {
     this.remotePath = remotePath ?? remoteFile!.path.path;
   }
 
-  static Future<SaberSyncFile> relative(String relativeFilePath) {
+  static Future<SaberSyncFile> relative(
+    String relativeFilePath, {
+    bool useCache = true,
+  }) {
     final localFile = FileManager.getFile(relativeFilePath);
-    return const SaberSyncInterface().getSyncFileFromLocalFile(localFile);
+    return const SaberSyncInterface().getSyncFileFromLocalFile(
+      localFile,
+      useCache,
+    );
   }
 
   @override

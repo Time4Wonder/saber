@@ -884,6 +884,7 @@ class EditorState extends State<Editor> {
 
     final syncFile = await SaberSyncFile.relative(
       coreInfo.filePath + Editor.extension,
+      useCache: !isManual,
     );
 
     final bestFile = await SaberSyncInterface.getBestFile(
@@ -893,12 +894,15 @@ class EditorState extends State<Editor> {
     );
     if (bestFile != .remote) {
       if (isManual && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(t.editor.upToDate),
-            duration: const Duration(seconds: 1),
-          ),
-        );
+        await _initStrokes();
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(t.editor.upToDate),
+              duration: const Duration(seconds: 1),
+            ),
+          );
+        }
       }
       return;
     }

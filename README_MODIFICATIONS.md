@@ -81,6 +81,9 @@ This document lists the modifications made to the Saber codebase to fix encrypti
 
 ## 📥 Installation and Execution on Ubuntu/Linux
 
+> [!NOTE]
+> **No Flutter/Dart Required:** The release builds (both local release bundle and the AppImage from GitHub) are fully compiled native binaries. You **do not** need to have Flutter or Dart installed on the machine where you run them.
+
 Since you are running Ubuntu/Linux, you have two ways to run/install this modified version:
 
 ### Option A: Use your locally built version (Recommended for testing immediately)

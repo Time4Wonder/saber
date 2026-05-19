@@ -2,3 +2,7 @@
 	path = submodules/flutter
 	url = https://github.com/flutter/flutter.git
 	branch = stable
+
+[submodule "submodules/flutter-quill"]
+	path = submodules/flutter-quill
+	url = https://github.com/singerdmx/flutter-quill.git

@@ -31,6 +31,9 @@
 [中文 (繁體, 台灣)](https://github.com/saber-notes/saber/blob/main/README-zh-TW.md) |
 [العربية](https://github.com/saber-notes/saber/blob/main/README-ar.md) 
 
+> [!NOTE]
+> **Lokale Code-Modifikationen sind in [README_MODIFICATIONS.md](README_MODIFICATIONS.md) dokumentiert.**
+
 Als der Entwickler von Saber freue ich mich dir eine App vorzustellen, die deine Art Notizen zu erstellen revolutionieren soll. Saber ist die ultimative handschriftliche Notizen-App, designt um deine Erfahrung beim Erstellen von Notizen zu verbessern! Erfreue dich an der Kunst der Handschrift und lasse mit dieser funktionsreichen, von modernen Technologien unterstützten App deiner Kreativität freien Lauf. Sabers intuitives und modernes Interface macht es spielend leicht Notizen niederzuschreiben, Diagramme zu zeichnen oder PDFs zu kommentieren.
 
 Als ich anfing digitale Notizen zu machen, fand ich keine Open-Source-App die meinen Ansprüchen gerecht wurde und so landete ich erst bei einer proprietären App. Ich entschied mich dazu Saber zu erschaffen, um Menschen eine Open-Source-App als vertrauenswürdige Option zu schaffen. Saber ist komplett Open-Source, somit kann jede:r den Code auf Sicherheit und Datenschutz überprüfen. Saber verschlüsselt deine Daten und kann sie mit einem kompatiblen Server deiner Wahl synchronisieren, damit du die volle Kontrolle über deine Daten behälst. 

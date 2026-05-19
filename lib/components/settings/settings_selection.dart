@@ -106,7 +106,7 @@ class _SettingsSelectionState<T extends num>
       contentPadding: const .symmetric(vertical: 4, horizontal: 16),
       leading: AnimatedSwitcher(
         duration: const Duration(milliseconds: 100),
-        child: FaIcon(icon, key: ValueKey(icon)),
+        child: Icon(icon, key: ValueKey(icon)),
       ),
       title: Text(
         widget.title,

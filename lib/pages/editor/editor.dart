@@ -257,7 +257,7 @@ class EditorState extends State<Editor> {
 
   void _setState() => setState(() {});
 
-  Keybinding? _ctrlZ, _ctrlY, _ctrlShiftZ;
+  Keybinding? _ctrlZ, _ctrlY, _ctrlShiftZ, _ctrlR, _f5;
   void _assignKeybindings() {
     _ctrlZ = Keybinding([
       KeyCode.ctrl,
@@ -272,15 +272,26 @@ class EditorState extends State<Editor> {
       KeyCode.shift,
       KeyCode.from(LogicalKeyboardKey.keyZ),
     ], inclusive: true);
+    _ctrlR = Keybinding([
+      KeyCode.ctrl,
+      KeyCode.from(LogicalKeyboardKey.keyR),
+    ], inclusive: true);
+    _f5 = Keybinding([
+      KeyCode.from(LogicalKeyboardKey.f5),
+    ], inclusive: true);
     Keybinder.bind(_ctrlZ!, undo);
     Keybinder.bind(_ctrlY!, redo);
     Keybinder.bind(_ctrlShiftZ!, redo);
+    Keybinder.bind(_ctrlR!, () => _refreshCurrentNote(isManual: true));
+    Keybinder.bind(_f5!, () => _refreshCurrentNote(isManual: true));
   }
 
   void _removeKeybindings() {
     if (_ctrlZ != null) Keybinder.remove(_ctrlZ!);
     if (_ctrlY != null) Keybinder.remove(_ctrlY!);
     if (_ctrlShiftZ != null) Keybinder.remove(_ctrlShiftZ!);
+    if (_ctrlR != null) Keybinder.remove(_ctrlR!);
+    if (_f5 != null) Keybinder.remove(_f5!);
   }
 
   /// Creates pages until the given page index exists,
@@ -846,9 +857,30 @@ class EditorState extends State<Editor> {
     );
   }
 
-  void _refreshCurrentNote() async {
-    if (coreInfo.readOnly) return;
-    if (!stows.loggedIn) return;
+  void _refreshCurrentNote({bool isManual = false}) async {
+    if (coreInfo.readOnly && !coreInfo.readOnlyBecauseWatchingServer && !isManual) return;
+    if (!stows.loggedIn) {
+      if (isManual && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(t.login.status.loggedOut),
+          ),
+        );
+      }
+      return;
+    }
+
+    if (isManual) {
+      await saveToFile();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(t.editor.refreshing),
+            duration: const Duration(seconds: 1),
+          ),
+        );
+      }
+    }
 
     final syncFile = await SaberSyncFile.relative(
       coreInfo.filePath + Editor.extension,
@@ -859,13 +891,31 @@ class EditorState extends State<Editor> {
       onLocalFileNotFound: .local,
       onEqualFiles: .local,
     );
-    if (bestFile != .remote) return;
+    if (bestFile != .remote) {
+      if (isManual && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(t.editor.upToDate),
+            duration: const Duration(seconds: 1),
+          ),
+        );
+      }
+      return;
+    }
 
     late final StreamSubscription<SaberSyncFile> subscription;
     void listener(SaberSyncFile transferred) {
       if (transferred != syncFile) return;
       subscription.cancel();
       _initStrokes();
+      if (isManual && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(t.editor.refreshed),
+            duration: const Duration(seconds: 1),
+          ),
+        );
+      }
     }
 
     subscription = syncer.downloader.transferStream.listen(listener);

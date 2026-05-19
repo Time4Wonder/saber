@@ -27,7 +27,7 @@ class ShapePen extends Pen {
 
   static final log = Logger('ShapePen');
 
-  static const IconData shapePenIcon = FontAwesomeIcons.shapes;
+  static final IconData shapePenIcon = FontAwesomeIcons.shapes.data;
 
   static RecognizedUnistroke? detectedShape;
   void _detectShape() {

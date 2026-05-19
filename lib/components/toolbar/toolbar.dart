@@ -343,7 +343,7 @@ class _ToolbarState extends State<Toolbar> {
                   }
                 },
                 padding: buttonPadding,
-                child: FaIcon(Pen.currentPen.icon, size: 16),
+                child: Icon(Pen.currentPen.icon, size: 16),
               ),
               ToolbarIconButton(
                 tooltip: t.editor.pens.pencil,
@@ -362,7 +362,7 @@ class _ToolbarState extends State<Toolbar> {
                   }
                 },
                 padding: buttonPadding,
-                child: const FaIcon(Pencil.pencilIcon, size: 16),
+                child: Icon(Pencil.pencilIcon, size: 16),
               ),
               ToolbarIconButton(
                 tooltip: t.editor.pens.highlighter,
@@ -381,7 +381,7 @@ class _ToolbarState extends State<Toolbar> {
                   }
                 },
                 padding: buttonPadding,
-                child: const FaIcon(Highlighter.highlighterIcon, size: 16),
+                child: Icon(Highlighter.highlighterIcon, size: 16),
               ),
               ValueListenableBuilder(
                 valueListenable: showColorOptions,

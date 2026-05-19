@@ -226,6 +226,9 @@ class _TranslationsEditorDe extends TranslationsEditorEn {
 	@override String get pages => 'Seiten';
 	@override String get untitled => 'Unbenannt';
 	@override String get needsToSaveBeforeExiting => 'Deine Änderungen werden gespeichert... Du kannst den Editor ohne Datenverlust verlassen, sobald der Vorgang beendet ist.';
+	@override String get refreshing => 'Aktualisiere...';
+	@override String get refreshed => 'Aktualisiert';
+	@override String get upToDate => 'Bereits aktuell';
 }
 
 // Path: home.tabs

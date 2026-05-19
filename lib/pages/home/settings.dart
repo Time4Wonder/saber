@@ -148,7 +148,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final requiresManualUpdates = FlavorConfig.appStore.isEmpty;
 
     final IconData materialIcon = switch (defaultTargetPlatform) {
-      .windows => FontAwesomeIcons.windows,
+      .windows => FontAwesomeIcons.windows.data,
       _ => Icons.android,
     };
 
@@ -253,7 +253,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: t.settings.prefLabels.platform,
                   iconBuilder: (i) => switch (stows.platform.value) {
                     .iOS || .macOS => Icons.apple,
-                    .linux => FontAwesomeIcons.ubuntu,
+                    .linux => FontAwesomeIcons.ubuntu.data,
                     _ => materialIcon,
                   },
                   pref: _SettingsStows.platform,
@@ -278,8 +278,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           return defaultTargetPlatform.index;
                         return TargetPlatform.linux.index;
                       }(),
-                      const Icon(
-                        FontAwesomeIcons.ubuntu,
+                      Icon(
+                        FontAwesomeIcons.ubuntu.data,
                         semanticLabel: 'Yaru',
                       ),
                     ),
@@ -365,7 +365,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 SettingsSwitch(
                   title: t.settings.prefLabels.disableEraserAfterUse,
                   subtitle: t.settings.prefDescriptions.disableEraserAfterUse,
-                  icon: FontAwesomeIcons.eraser,
+                  icon: FontAwesomeIcons.eraser.data,
                   pref: stows.disableEraserAfterUse,
                 ),
                 ValueListenableBuilder(
@@ -528,7 +528,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 SettingsSelection(
                   title: t.settings.prefLabels.shapeRecognitionDelay,
                   subtitle: t.settings.prefDescriptions.shapeRecognitionDelay,
-                  icon: FontAwesomeIcons.shapes,
+                  icon: FontAwesomeIcons.shapes.data,
                   pref: stows.shapeRecognitionDelay,
                   options: [
                     const ToggleButtonsOption(500, Text('0.5s')),

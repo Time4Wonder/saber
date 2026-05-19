@@ -362,3 +362,7 @@ editor:
   pages: Seiten
   untitled: Unbenannt
   needsToSaveBeforeExiting: Deine Änderungen werden gespeichert... Du kannst den Editor ohne Datenverlust verlassen, sobald der Vorgang beendet ist.
+  refreshing: Aktualisiere...
+  refreshed: Aktualisiert
+  upToDate: Bereits aktuell
+

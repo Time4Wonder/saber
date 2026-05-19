@@ -316,6 +316,15 @@ class TranslationsEditorEn {
 
 	/// en: 'Saving your changes... You can safely exit the editor when it's done'
 	String get needsToSaveBeforeExiting => 'Saving your changes... You can safely exit the editor when it\'s done';
+
+	/// en: 'Refreshing...'
+	String get refreshing => 'Refreshing...';
+
+	/// en: 'Refreshed'
+	String get refreshed => 'Refreshed';
+
+	/// en: 'Already up to date'
+	String get upToDate => 'Already up to date';
 }
 
 // Path: home.tabs

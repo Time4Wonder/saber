@@ -362,3 +362,7 @@ editor:
   pages: Pages
   untitled: Untitled
   needsToSaveBeforeExiting: Saving your changes... You can safely exit the editor when it's done
+  refreshing: Refreshing...
+  refreshed: Refreshed
+  upToDate: Already up to date
+

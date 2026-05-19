@@ -20,5 +20,5 @@ class Pencil extends Pen {
 
   static var currentPencil = Pencil();
 
-  static const IconData pencilIcon = FontAwesomeIcons.pencil;
+  static final IconData pencilIcon = FontAwesomeIcons.pencil.data;
 }

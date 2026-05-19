@@ -112,7 +112,7 @@ class _PenModalState extends State<PenModal> {
               shape: const CircleBorder(),
             ),
             tooltip: t.editor.pens.shapePen,
-            icon: const FaIcon(ShapePen.shapePenIcon),
+            icon: const FaIcon(FontAwesomeIcons.shapes),
           ),
         ],
       ],

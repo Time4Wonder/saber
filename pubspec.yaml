@@ -78,7 +78,7 @@ dependencies:
 
   flex_color_picker: ^3.4.1
 
-  font_awesome_flutter: ^10.11.0
+  font_awesome_flutter: ^11.0.0
 
   flutter_svg: ^2.0.0+1
 
@@ -191,6 +191,9 @@ dependency_overrides:
       url: https://github.com/m-berto/flutter_secure_storage.git
       ref: patch-2
       path: flutter_secure_storage_linux
+
+  flutter_quill:
+    path: submodules/flutter-quill
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

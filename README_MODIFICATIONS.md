@@ -76,3 +76,47 @@ This document lists the modifications made to the Saber codebase to fix encrypti
   case TargetPlatform.linux:
     icon = FontAwesomeIcons.linux as IconData;
   ```
+
+---
+
+## 📥 Installation and Execution on Ubuntu/Linux
+
+Since you are running Ubuntu/Linux, you have two ways to run/install this modified version:
+
+### Option A: Use your locally built version (Recommended for testing immediately)
+Since you successfully ran `flutter build linux --release` locally, the compiled binary is sitting in your build folder.
+
+1. **Test run it immediately:**
+   ```bash
+   ./build/linux/x64/release/bundle/saber
+   ```
+
+2. **Install it globally on your system:**
+   To make it launchable from any terminal session:
+   ```bash
+   # Create a system directory for the app
+   sudo mkdir -p /opt/saber
+   
+   # Copy the built release files there
+   sudo cp -r build/linux/x64/release/bundle/* /opt/saber/
+   
+   # Create a symlink to run it via the 'saber' command
+   sudo ln -sf /opt/saber/saber /usr/local/bin/saber
+   ```
+   Now you can just type `saber` in any terminal to launch your modded version.
+
+---
+
+### Option B: Download the built AppImage from GitHub Actions
+After you push a release tag (like `v1.29.3`), GitHub Actions will build an AppImage automatically:
+
+1. Go to your repository's **Releases** page on GitHub.
+2. Download the `Saber-*-x86_64.AppImage` file.
+3. Make it executable:
+   ```bash
+   chmod +x Saber-*.AppImage
+   ```
+4. Run it:
+   ```bash
+   ./Saber-*.AppImage
+   ```

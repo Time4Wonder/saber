@@ -1,5 +1,17 @@
 # Saber Modifications Summary
 
+> [!IMPORTANT]
+> **Disclaimer / Info:**
+> These changes were quickly "vibe-coded" on Ubuntu to fix specific bugs in this workspace. There is no official guarantee or warranty of any kind.
+
+### 🔑 Manual Refresh Shortcuts
+* **Shortcuts**: `Ctrl+R` or `F5` (inside the note editor)
+* **User Perspective**:
+  When you are editing a note, pressing `Ctrl+R` or `F5` will automatically:
+  1. Save your current local drawing/progress to disk.
+  2. Perform a live query to Nextcloud bypassing local caches to check if there is a newer version of the note on the server.
+  3. If a newer version is found on Nextcloud, it automatically downloads the file and instantly reloads the editor screen to show the new content.
+
 This document lists the modifications made to the Saber codebase to fix encryption issues, manual refresh bugs, and real-time collaboration/synchronization.
 
 ---

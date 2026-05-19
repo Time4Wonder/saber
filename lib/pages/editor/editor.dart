@@ -884,7 +884,7 @@ class EditorState extends State<Editor> {
 
     final syncFile = await SaberSyncFile.relative(
       coreInfo.filePath + Editor.extension,
-      useCache: !isManual,
+      useCache: !isManual && !coreInfo.readOnlyBecauseWatchingServer,
     );
 
     final bestFile = await SaberSyncInterface.getBestFile(
@@ -1845,7 +1845,7 @@ class EditorState extends State<Editor> {
       setIsWatchingServer: (bool watch) {
         if (watch) {
           _watchServerTimer ??= Timer.periodic(
-            const Duration(seconds: 5),
+            const Duration(seconds: 3),
             (_) => _refreshCurrentNote(),
           );
           coreInfo.readOnlyBecauseWatchingServer |= !coreInfo.readOnly;
